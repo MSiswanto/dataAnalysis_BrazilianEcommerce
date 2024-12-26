@@ -1,13 +1,18 @@
-# dataAnalysis_BrazilianEcommerce
+## dataAnalysis_BrazilianEcommerce
 
 Data Analysis of Brazilian E-Commerce 
+
 
 # Setup Environmnet - Anaconda
 
 conda create --name main-ds python=3.8.20
+
 conda activate main-ds
+
 pip install -r requirements.txt
+
 pip install streamlit
+
 
 # Setup Environment - Shell/Terminal
 
@@ -20,6 +25,7 @@ pipenv install
 pipenv shell
 
 pip install -r requirements.txt
+
 
 # Run steamlit app
 
