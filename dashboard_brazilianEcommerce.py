@@ -5,10 +5,10 @@ import matplotlib.pyplot as plt
 
 # Load Data (update file paths sesuai lokasi Anda)
 
-customers_df = pd.read_csv('data/customers_dataset.csv')
-orders_df = pd.read_csv('data/orders_dataset.csv')
-order_items_df = pd.read_csv('data/order_items_dataset.csv')
-products_df = pd.read_csv('data/products_dataset.csv')
+customers_df = pd.read_csv('https://github.com/MSiswanto/dataAnalysis_BrazilianEcommerce/blob/main/customers_dataset.csv')
+orders_df = pd.read_csv('https://github.com/MSiswanto/dataAnalysis_BrazilianEcommerce/blob/main/orders_dataset.csv')
+order_items_df = pd.read_csv('https://github.com/MSiswanto/dataAnalysis_BrazilianEcommerce/blob/main/order_items_dataset.csv')
+products_df = pd.read_csv('https://github.com/MSiswanto/dataAnalysis_BrazilianEcommerce/blob/main/products_dataset.csv')
 
 # --- Bagian 1: Jumlah Pelanggan Berdasarkan Kota dan State ---
 st.title('Dashboard Data Pelanggan dan RFM Analysis')
