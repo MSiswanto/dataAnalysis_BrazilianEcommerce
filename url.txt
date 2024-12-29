@@ -1,1 +1,1 @@
-https://dashboard-brazilianecommerce.streamlit.app/
+https://analysis-brazilianecommerce.streamlit.app/
