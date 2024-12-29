@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 # Correct URL
 #customers_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/customers_dataset.csv')
 customers_df = pd.read_csv("dashboard/customers_dataset.csv")
-orders_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/orders_dataset.csv')
-order_items_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/order_items_dataset.csv')
-products_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/products_dataset.csv')
+orders_df = pd.read_csv("dashboard/orders_dataset.csv")
+order_items_df = pd.read_csv("dashboard/order_items_dataset.csv")
+products_df = pd.read_csv("dashboard/products_dataset.csv")
 
 # --- Bagian 1: Jumlah Pelanggan Berdasarkan Kota dan State ---
 st.title('Dashboard Data Pelanggan dan RFM Analysis')
