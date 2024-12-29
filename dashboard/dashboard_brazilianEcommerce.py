@@ -3,8 +3,6 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# Load Data (update file paths sesuai lokasi Anda)
-
 # Correct URL
 customers_df = pd.read_csv("dashboard/customers_dataset.csv")
 orders_df = pd.read_csv("dashboard/orders_dataset.csv")
@@ -19,25 +17,40 @@ st.header('Jumlah Pelanggan Berdasarkan Kota dan State')
 city_counts = customers_df['customer_city'].value_counts()
 state_counts = customers_df['customer_state'].value_counts()
 
-# Subplot dengan 2 bar chart
-fig, ax = plt.subplots(1, 2, figsize=(15, 6))
+# Subplot dengan 2 Kolom
+# Subplot dengan 2 bar chart menggunakan Streamlit Columns
+col1, col2 = st.columns(2)
 
-# Diagram Batang Kota
-sns.barplot(x=city_counts.head(10).index, y=city_counts.head(10).values, ax=ax[0])
-ax[0].set_title('Top 10 Kota dengan Pelanggan Terbanyak')
-ax[0].set_xlabel('Kota')
-ax[0].set_ylabel('Jumlah Pelanggan')
-ax[0].tick_params(axis='x', rotation=45)
+# Validasi data untuk city_counts dan state_counts
+if city_counts.empty:
+    st.warning("Data untuk jumlah pelanggan berdasarkan kota kosong.")
+else:
+    with col1:
+        # Diagram Batang Kota
+        fig, ax = plt.subplots(figsize=(6, 4))
+        sns.barplot(x=city_counts.head(10).index, y=city_counts.head(10).values, ax=ax, palette="crest")
+        ax.set_title('Top 10 Kota', fontsize=14)
+        ax.set_xlabel('Kota', fontsize=10)
+        ax.set_ylabel('Jumlah Pelanggan', fontsize=10)
+        ax.tick_params(axis='x', rotation=45)
+        ax.tick_params(axis='y', labelsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
-# Diagram Batang State
-sns.barplot(x=state_counts.head(10).index, y=state_counts.head(10).values, ax=ax[1])
-ax[1].set_title('Top 10 State dengan Pelanggan Terbanyak')
-ax[1].set_xlabel('State')
-ax[1].set_ylabel('Jumlah Pelanggan')
-ax[1].tick_params(axis='x', rotation=45)
-
-plt.tight_layout()
-st.pyplot(fig)
+if state_counts.empty:
+    st.warning("Data untuk jumlah pelanggan berdasarkan state kosong.")
+else:
+    with col2:
+        # Diagram Batang State
+        fig, ax = plt.subplots(figsize=(6, 4))
+        sns.barplot(x=state_counts.head(10).index, y=state_counts.head(10).values, ax=ax, palette="coolwarm")
+        ax.set_title('Top 10 State', fontsize=14)
+        ax.set_xlabel('State', fontsize=10)
+        ax.set_ylabel('Jumlah Pelanggan', fontsize=10)
+        ax.tick_params(axis='x', rotation=45)
+        ax.tick_params(axis='y', labelsize=8)
+        plt.tight_layout()
+        st.pyplot(fig)
 
 # --- Bagian 2: RFM Analysis ---
 st.header('RFM Analysis')
@@ -67,12 +80,77 @@ rfm_df = pd.DataFrame({
 }).reset_index()
 
 # Menampilkan tabel RFM
-st.subheader('Tabel RFM')
-st.dataframe(rfm_df)
+#st.subheader('Tabel RFM')
+#st.dataframe(rfm_df)
 
 # Pelanggan dengan revenue terbesar dan terkecil
 top_customer = rfm_df.loc[rfm_df['monetary'].idxmax()]
 bottom_customer = rfm_df.loc[rfm_df['monetary'].idxmin()]
+
+#Sidebar
+ 
+#with st.sidebar:
+    # Menambahkan logo perusahaan
+    #st.image("Brazilian_E.png")
+
+logo_path = "Brazilian_E.png"
+with st.sidebar:
+    st.image(logo_path, use_column_width=True)
+
+
+# Data month_year
+data = {
+    "month_year": [
+        "2016-09", "2016-10", "2016-12", "2017-01", "2017-02", "2017-03", "2017-04",
+        "2017-05", "2017-06", "2017-07", "2017-08", "2017-09", "2017-10", "2017-11",
+        "2017-12", "2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06",
+        "2018-07", "2018-08", "2018-09"
+    ],
+    "count": [
+        4, 318, 1, 797, 1766, 2680, 2400, 3691, 3241, 4021, 4325, 4281, 4626, 7535,
+        5666, 7268, 6724, 7208, 6939, 6872, 6167, 6291, 6459, 1
+    ]
+}
+
+# Membuat DataFrame
+df = pd.DataFrame(data)
+df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
+df = df.sort_values('month_year')
+
+# Sidebar untuk Dropdown
+st.sidebar.header('Filter Data')
+selected_month = st.sidebar.selectbox(
+    "Pilih Bulan:",
+    ["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
+)
+
+# Filter Data Berdasarkan Pilihan
+filtered_df = df if selected_month == "Semua" else df[df['month_year'].dt.strftime('%Y-%m') == selected_month]
+
+# Membuat Plot di Sidebar
+fig, ax = plt.subplots(figsize=(5, 3))  # Ukuran kecil agar sesuai sidebar
+sns.barplot(
+    x=filtered_df['month_year'].dt.strftime('%Y-%m'), 
+    y=filtered_df['count'], 
+    palette="crest", 
+    ax=ax
+)
+
+# Menambahkan Anotasi
+for i, value in enumerate(filtered_df['count']):
+    ax.text(i, value + max(filtered_df['count']) * 0.02, f"{value:,}", ha='center', fontsize=8)
+
+# Menyesuaikan Label
+ax.set_title("Jumlah Pesanan", fontsize=10)
+ax.set_xlabel("", fontsize=8)
+ax.set_ylabel("Pesanan", fontsize=8)
+ax.tick_params(axis='x', rotation=45, labelsize=8)
+ax.tick_params(axis='y', labelsize=8)
+
+# Menampilkan Plot di Sidebar
+st.sidebar.pyplot(fig)
+
+#finish sidebar
 
 # Menampilkan informasi tambahan
 st.subheader('Informasi Pelanggan')
@@ -101,18 +179,6 @@ st.header('Visualisasi Tambahan')
 st.subheader('Jumlah Pesanan per Bulan')
 
 # Data month_year
-data = {
-    "month_year": [
-        "2016-09", "2016-10", "2016-12", "2017-01", "2017-02", "2017-03", "2017-04",
-        "2017-05", "2017-06", "2017-07", "2017-08", "2017-09", "2017-10", "2017-11",
-        "2017-12", "2018-01", "2018-02", "2018-03", "2018-04", "2018-05", "2018-06",
-        "2018-07", "2018-08", "2018-09"
-    ],
-    "count": [
-        4, 318, 1, 797, 1766, 2680, 2400, 3691, 3241, 4021, 4325, 4281, 4626, 7535,
-        5666, 7268, 6724, 7208, 6939, 6872, 6167, 6291, 6459, 1
-    ]
-}
 
 df = pd.DataFrame(data)
 df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
@@ -166,3 +232,15 @@ ax[1].set_ylabel("Kategori Produk", fontsize=12)
 # Menampilkan plot
 plt.tight_layout()
 st.pyplot(fig)
+
+
+
+
+
+
+       
+
+
+
+
+
