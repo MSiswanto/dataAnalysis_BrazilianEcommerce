@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 # Load Data (update file paths sesuai lokasi Anda)
 
 # Correct URL
-customers_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/customers_dataset.csv')
-#customers_df = pd.read_csv("dashboard/customers_dataset.csv")
+#customers_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/customers_dataset.csv')
+customers_df = pd.read_csv("dashboard/customers_dataset.csv")
 orders_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/orders_dataset.csv')
 order_items_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/order_items_dataset.csv')
 products_df = pd.read_csv('https://raw.githubusercontent.com/MSiswanto/dataAnalysis_BrazilianEcommerce/main/dashboard/products_dataset.csv')
