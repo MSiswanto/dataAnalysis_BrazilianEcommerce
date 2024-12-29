@@ -89,7 +89,6 @@ bottom_customer = rfm_df.loc[rfm_df['monetary'].idxmin()]
 
 #Sidebar
 with st.sidebar:
-    st.image(logo_path, use_column_width=True)
     st.image("Brazilian_E.png", use_column_width=True)
 
 # Data month_year
