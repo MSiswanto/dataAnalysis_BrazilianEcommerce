@@ -223,15 +223,3 @@ ax[1].set_ylabel("Kategori Produk", fontsize=12)
 # Menampilkan plot
 plt.tight_layout()
 st.pyplot(fig)
-
-
-
-
-
-
-       
-
-
-
-
-
