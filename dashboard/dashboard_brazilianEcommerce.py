@@ -89,7 +89,8 @@ bottom_customer = rfm_df.loc[rfm_df['monetary'].idxmin()]
 
 #Sidebar
 with st.sidebar:
-    st.image("Brazilian_E.png", use_column_width=True)
+    st.image("dashboard/Brazilian_E.png", use_column_width=True)
+
 
 # Data month_year
 data = {
@@ -142,8 +143,6 @@ ax.tick_params(axis='y', labelsize=8)
 
 # Menampilkan Plot di Sidebar
 st.sidebar.pyplot(fig)
-
-#finish sidebar
 
 # Menampilkan informasi tambahan
 st.subheader('Informasi Pelanggan')
