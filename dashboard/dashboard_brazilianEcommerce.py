@@ -3,6 +3,45 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# Page config
+st.set_page_config(
+    page_title="Dashboard E-commerce Brazil",
+    page_icon="🛒",
+    layout="wide"
+)
+
+# Custom styling
+st.markdown("""
+    <style>
+    html, body, [class*="css"] {
+        font-family: 'Segoe UI', sans-serif;
+        background-color: #FAFAFA;
+        color: #333;
+    }
+    h1, h2, h3 {
+        font-weight: 600;
+    }
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    .stSidebar {
+        background-color: #ffffff;
+        border-right: 1px solid #e6e6e6;
+    }
+    .stButton > button {
+        background-color: #4B8BBE;
+        color: white;
+        border-radius: 8px;
+    }
+    .stButton > button:hover {
+        background-color: #306998;
+        color: white;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+
 # Correct URL
 customers_df = pd.read_csv("dashboard/customers_dataset.csv")
 orders_df = pd.read_csv("dashboard/orders_dataset.csv")
