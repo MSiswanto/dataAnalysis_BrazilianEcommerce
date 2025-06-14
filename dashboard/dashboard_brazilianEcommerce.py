@@ -176,13 +176,18 @@ df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
 df = df.sort_values('month_year')
 
 # Sidebar untuk Dropdown
-#st.sidebar.header('Filter Data')
-with st.sidebar:
-    st.image("dashboard/Brazilian_E.png", use_container_width=True)
-    st.markdown("### 📅 Filter Data")
-    selected_month = st.sidebar.selectbox("Pilih Bulan:",
+st.sidebar.header('Filter Data')
+st.image("dashboard/Brazilian_E.png", use_container_width=True)
+st.markdown("### 📅 Filter Data")
+selected_month = st.sidebar.selectbox("Pilih Bulan:",
     ["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
 )
+#with st.sidebar:
+    #st.image("dashboard/Brazilian_E.png", use_container_width=True)
+    #st.markdown("### 📅 Filter Data")
+    selected_month = st.sidebar.selectbox("Pilih Bulan:",
+    #["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
+#)
 
 # Filter Data Berdasarkan Pilihan
 filtered_df = df if selected_month == "Semua" else df[df['month_year'].dt.strftime('%Y-%m') == selected_month]
