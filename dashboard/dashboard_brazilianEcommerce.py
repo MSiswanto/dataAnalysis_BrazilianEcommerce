@@ -175,7 +175,6 @@ df = pd.DataFrame(data)
 df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
 df = df.sort_values('month_year')
 
-    )
 
 # Sidebar untuk Dropdown
 with st.sidebar:
