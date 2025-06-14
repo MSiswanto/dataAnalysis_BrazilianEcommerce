@@ -185,7 +185,7 @@ selected_month = st.sidebar.selectbox("Pilih Bulan:",
 #with st.sidebar:
     #st.image("dashboard/Brazilian_E.png", use_container_width=True)
     #st.markdown("### 📅 Filter Data")
-    selected_month = st.sidebar.selectbox("Pilih Bulan:",
+    #selected_month = st.sidebar.selectbox("Pilih Bulan:",
     #["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
 #)
 
