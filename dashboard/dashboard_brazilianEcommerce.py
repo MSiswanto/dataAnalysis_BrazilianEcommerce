@@ -156,17 +156,6 @@ rfm_df = pd.DataFrame({
 top_customer = rfm_df.loc[rfm_df['monetary'].idxmax()]
 bottom_customer = rfm_df.loc[rfm_df['monetary'].idxmin()]
 
-#Sidebar
-with st.sidebar:
-    st.image("dashboard/Brazilian_E.png", use_container_width=True)
-
-# Sidebar
-with st.sidebar:
-    st.image("dashboard/Brazilian_E.png", use_container_width=True)
-    st.markdown("### 📅 Filter Data")
-    # Example selector (replace with actual values from df)
-    selected_month = st.selectbox("Pilih Bulan", ["2022-01", "2022-02", "2022-03"])
-    
 # Data month_year
 data = {
     "month_year": [
@@ -187,9 +176,11 @@ df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
 df = df.sort_values('month_year')
 
 # Sidebar untuk Dropdown
-st.sidebar.header('Filter Data')
-selected_month = st.sidebar.selectbox(
-    "Pilih Bulan:",
+#st.sidebar.header('Filter Data')
+with st.sidebar:
+    st.image("dashboard/Brazilian_E.png", use_container_width=True)
+    st.markdown("### 📅 Filter Data")
+    selected_month = st.sidebar.selectbox("Pilih Bulan:",
     ["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
 )
 
