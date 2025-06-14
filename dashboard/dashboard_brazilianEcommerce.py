@@ -178,6 +178,7 @@ df = df.sort_values('month_year')
 # Sidebar untuk Dropdown
 with st.sidebar:
     st.image("https://cdn.pixabay.com/photo/2022/01/11/12/12/artificial-intelligence-6931051_1280.png", use_container_width=True)
+
     st.header('📅 Filter Data')
     selected_month = st.selectbox(
         "Pilih Bulan:",
