@@ -188,7 +188,7 @@ with st.sidebar:
 with st.sidebar:
     st.header('📅 Filter Data')
     selected_month = st.selectbox(
-        "Pilih Bulan:",
+        "Select Month & Year:",
         ["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
     )
 
