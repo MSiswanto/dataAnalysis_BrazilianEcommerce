@@ -176,8 +176,8 @@ df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
 df = df.sort_values('month_year')
 
 # Sidebar untuk Dropdown
-st.sidebar.header('### 📅 Filter Data')
 st.image("dashboard/Brazilian_E.png", use_container_width=True)
+st.sidebar.header('📅 Filter Data')
 selected_month = st.sidebar.selectbox("Pilih Bulan:",
     ["Semua"] + df['month_year'].dt.strftime('%Y-%m').tolist()
 )
