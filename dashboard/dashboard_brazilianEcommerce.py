@@ -48,6 +48,40 @@ orders_df = pd.read_csv("dashboard/orders_dataset.csv")
 order_items_df = pd.read_csv("dashboard/order_items_dataset.csv")
 products_df = pd.read_csv("dashboard/products_dataset.csv")
 
+#Tambahan 2025
+# Sidebar
+with st.sidebar:
+    st.image("dashboard/Brazilian_E.png", use_container_width=True)
+    st.markdown("### 📅 Filter")
+    # Example selector (replace with actual values from df)
+    selected_month = st.selectbox("Pilih Bulan", ["2022-01", "2022-02", "2022-03"])
+
+# Title
+st.markdown("<h1 style='text-align: center;'>📈 E-commerce Brazil Dashboard</h1>", unsafe_allow_html=True)
+
+# Simulated top/bottom customer revenue (replace with actual computation)
+top_customer = {"monetary": 1890.00}
+bottom_customer = {"monetary": 25.50}
+
+col1, col2 = st.columns(2)
+with col1:
+    st.success(f"💰 **Top Customer Revenue**: ${top_customer['monetary']:.2f}")
+with col2:
+    st.warning(f"🔻 **Bottom Customer Revenue**: ${bottom_customer['monetary']:.2f}")
+
+# Example chart
+st.subheader("📊 Distribusi Monetary")
+fig, ax = plt.subplots()
+# sns.histplot(df['monetary'], kde=True, ax=ax)
+ax.set_title("Distribusi Nilai Monetary Pelanggan")
+ax.set_xlabel("Monetary Value")
+ax.set_ylabel("Jumlah")
+fig.subplots_adjust(bottom=0.25)
+st.pyplot(fig)
+
+# Tambahan visualisasi bisa ditaruh di bawah dengan struktur yang serupa
+
+
 # --- Bagian 1: Jumlah Pelanggan Berdasarkan Kota dan State ---
 st.title('Dashboard Data Pelanggan dan RFM Analysis')
 st.header('Jumlah Pelanggan Berdasarkan Kota dan State')
@@ -129,6 +163,13 @@ bottom_customer = rfm_df.loc[rfm_df['monetary'].idxmin()]
 #Sidebar
 with st.sidebar:
     st.image("dashboard/Brazilian_E.png", use_container_width=True)
+
+# Sidebar
+with st.sidebar:
+    st.image("dashboard/Brazilian_E.png", use_container_width=True)
+    st.markdown("### 📅 Filter")
+    # Example selector (replace with actual values from df)
+    selected_month = st.selectbox("Pilih Bulan", ["2022-01", "2022-02", "2022-03"])
     
 # Data month_year
 data = {
