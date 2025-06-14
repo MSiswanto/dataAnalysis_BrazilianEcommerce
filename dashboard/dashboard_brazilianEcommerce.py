@@ -239,7 +239,7 @@ plt.tight_layout()
 st.pyplot(fig)
 
 # --- Bagian 3: Visualisasi Tambahan ---
-st.header('Visualisasi Tambahan')
+#st.header('Visualisasi Tambahan')
 
 # Pesanan per Bulan
 st.subheader('Jumlah Pesanan per Bulan')
