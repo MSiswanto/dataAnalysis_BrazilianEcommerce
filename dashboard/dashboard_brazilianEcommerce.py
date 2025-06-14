@@ -175,10 +175,14 @@ df = pd.DataFrame(data)
 df['month_year'] = pd.to_datetime(df['month_year'], format='%Y-%m')
 df = df.sort_values('month_year')
 
+with st.sidebar:
+    st.image(
+        "https://cdn.pixabay.com/photo/2020/06/20/17/31/chart-5322024_1280.png",
+        use_container_width=True
+    )
+
 # Sidebar untuk Dropdown
 with st.sidebar:
-    st.image("https://cdn.pixabay.com/photo/2022/01/11/12/12/artificial-intelligence-6931051_1280.png", use_container_width=True)
-
     st.header('📅 Filter Data')
     selected_month = st.selectbox(
         "Pilih Bulan:",
