@@ -50,11 +50,7 @@ products_df = pd.read_csv("dashboard/products_dataset.csv")
 
 #Tambahan 2025
 # Sidebar
-#with st.sidebar:
-    #st.image("dashboard/Brazilian_E.png", use_container_width=True)
-    #st.markdown("### 📅 Filter")
-    # Example selector (replace with actual values from df)
-    #selected_month = st.selectbox("Pilih Bulan", ["2022-01", "2022-02", "2022-03"])
+
 
 # Title
 st.markdown("<h1 style='text-align: center;'>📈 E-commerce Brazil Dashboard</h1>", unsafe_allow_html=True)
